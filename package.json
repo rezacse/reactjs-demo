@@ -3,7 +3,10 @@
   "description": "React and Redux Pluralsight course by Cory House",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.dev.js --port 3000"
+    "start": "run-p start:server start:client",
+    "start:client": "webpack-dev-server --config webpack.config.dev.js --port 3000",
+    "prestart:server": "node tools/createMockDb.js",
+    "start:server": "node tools/apiServer.js"
   },
   "dependencies": {
     "bootstrap": "4.3.1",
