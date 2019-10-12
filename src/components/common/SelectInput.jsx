@@ -26,7 +26,7 @@ const SelectInput = props => {
             );
           })}
         </select>
-        {error && <div className="alert alert-danger">{error}</div>}
+        {error && <div className="py-1 text-danger">{error}</div>}
       </div>
     </div>
   );

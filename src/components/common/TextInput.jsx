@@ -16,11 +16,11 @@ const TextInput = props => {
           type="text"
           className="form-control"
           name={name}
-          value={value}
+          value={value || ''}
           placeholder={placeholder}
           onChange={onChange}
         />
-        {error && <div className="alert alert-danger">{error}</div>}
+        {error && <div className="py-1 text-danger">{error}</div>}
       </div>
     </div>
   );
