@@ -6,7 +6,8 @@
     "start": "run-p start:server start:client",
     "start:client": "webpack-dev-server --config webpack.config.dev.js --port 3000",
     "prestart:server": "node tools/createMockDb.js",
-    "start:server": "node tools/apiServer.js"
+    "start:server": "node tools/apiServer.js",
+    "test": "jest --watch"
   },
   "dependencies": {
     "bootstrap": "4.3.1",
@@ -61,5 +62,14 @@
     "presets": [
       "babel-preset-react-app"
     ]
+  },
+  "jest": {
+    "setupFiles": [
+      "./test/testSetup.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/fileMock.js",
+      "\\.(css|less|scss|sass)$": "<rootDir>/test/styleMock.js"
+    }
   }
 }

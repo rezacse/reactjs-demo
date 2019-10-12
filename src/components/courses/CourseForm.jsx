@@ -3,22 +3,22 @@ import PropTypes from 'prop-types';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 
-const CourseForm = props => {
-  let {
-    authors,
-    course,
-    onChange,
-    onSave,
-    saving = false,
-    errors = {}
-  } = props;
+const CourseForm = ({
+  authors,
+  course,
+  onChange,
+  onSave,
+  saving = false,
+  errors = {}
+}) => {
   let authorOptions = authors.map(author => ({
     value: author.id,
     text: author.name
   }));
+
   return (
     <form onSubmit={onSave}>
-      <h2> {course.id ? 'Edit' : 'Add'} Course </h2>
+      <h2>{course.id ? 'Edit' : 'Add'} Course</h2>
       {errors.onSave && (
         <div className="alert alert-danger" role="alert">
           {errors.onSave}

@@ -8,7 +8,7 @@ import { getAuthors } from '../../redux/actions/authorActions';
 import newCourse from '../../../tools/mockData';
 import { toast } from 'react-toastify';
 
-function ManageCoursePage({
+export function ManageCoursePage({
   courses,
   authors,
   getAuthors,
