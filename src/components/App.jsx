@@ -12,17 +12,19 @@ import ManageCourse from './courses/ManageCoursePage';
 
 function App() {
   return (
-    <div className="container-fluid">
+    <div>
       <Header />
-      <Switch>
-        <Route path="/" component={HomePage} exact />
-        <Route path="/courses" component={CoursesPage} />
-        <Route path="/about" component={AboutPage} />
-        <Route path="/course/:slug" component={ManageCourse} />
-        <Route path="/course" component={ManageCourse} />
-        <Route component={PageNotFound} />
-      </Switch>
-      <ToastContainer autoClose={3000} hideProgressBar />
+      <div className="container-fluid mt-4">
+        <Switch>
+          <Route path="/" component={HomePage} exact />
+          <Route path="/courses" component={CoursesPage} />
+          <Route path="/about" component={AboutPage} />
+          <Route path="/course/:slug" component={ManageCourse} />
+          <Route path="/course" component={ManageCourse} />
+          <Route component={PageNotFound} />
+        </Switch>
+        <ToastContainer autoClose={3000} hideProgressBar />
+      </div>
     </div>
   );
 }
