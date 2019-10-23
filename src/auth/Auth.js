@@ -6,8 +6,12 @@ export default class Auth {
       domain: process.env.REACT_APP_AUTH0_DOMAIN,
       clientID: process.env.REACT_APP_AUTH0_CLIENTID,
       redirectUri: process.env.REACT_APP_AUTH0_CALLBACK_URL,
-      responseType: 'token_id_token',
+      responseType: 'token id_token',
       scope: 'openid profile email'
     });
   }
+
+  login = () => {
+    this.auth0.authorize();
+  };
 }

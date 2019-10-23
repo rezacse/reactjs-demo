@@ -17,13 +17,13 @@ class CoursesPage extends React.Component {
   componentDidMount() {
     const { actions, authors, courses } = this.props;
 
-    if (courses.length === 0) {
+    if (authors.length === 0) {
       actions.getAuthors().catch(error => {
         alert('Loading authors failed' + error);
       });
     }
 
-    if (authors.length === 0) {
+    if (courses.length === 0) {
       actions.getCourses().catch(error => {
         alert('Loading courses failed' + error);
       });

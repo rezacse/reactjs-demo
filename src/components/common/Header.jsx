@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Header = () => {
-  const activeStyle = { color: 'black', 'background-color': 'white' };
+  const activeStyle = { color: 'black', backgroundColor: 'white' };
   return (
     <nav>
       <ul>

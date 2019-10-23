@@ -37,3 +37,7 @@ build
 
 # json-server db
 db.json
+
+#env file
+.env.development
+.env
