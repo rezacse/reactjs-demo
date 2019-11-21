@@ -1,11 +1,9 @@
-import {
-  handleResponse,
-  handleError
-} from "./apiUtils";
-const baseAuthorUrl = process.env.API_URL + "/authors/";
+import API from '../utils/axiosSetup';
+
+import { handleResponse, handleError } from './apiUtils';
 
 export function getAuthors() {
-  return fetch(baseAuthorUrl)
+  return API.get('authors')
     .then(handleResponse)
     .catch(handleError);
 }
