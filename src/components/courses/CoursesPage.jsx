@@ -8,6 +8,8 @@ import * as authorActions from '../../redux/actions/authorActions';
 import CourseList from './CourseList';
 import Spinner from '../common/Spinner';
 import { toast } from 'react-toastify';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
 
 class CoursesPage extends React.Component {
   state = {
@@ -48,12 +50,17 @@ class CoursesPage extends React.Component {
           <Spinner />
         ) : (
           <>
-            <button
-              className="btn btn-primary add-course my-2"
+            <Button
+              variant="contained"
+              color="primary"
               onClick={() => this.setState({ redirectToAddCoursePage: true })}
             >
+              {/* className={classes.iconHover} */}
+              <Icon color="error" style={{ fontSize: 30 }}>
+                add_circle
+              </Icon>
               Add Course
-            </button>
+            </Button>
             <CourseList
               courses={this.props.courses}
               onDeleteClick={this.handleDeleteCourse}
