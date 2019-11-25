@@ -1,17 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 
-const CourseForm = ({
-  authors,
-  course,
-  onChange,
-  onSave,
-  saving = false,
-  errors = {}
-}) => {
-  let authorOptions = authors.map(author => ({
+const CourseForm: React.SFC<ICourseProps> = props => {
+  let {
+    authors,
+    course,
+    onChange,
+    onSave,
+    saving = false,
+    errors = {}
+  } = props;
+
+  let authorOptions = authors.map((author: any) => ({
     value: author.id,
     text: author.name
   }));
@@ -54,13 +55,22 @@ const CourseForm = ({
   );
 };
 
-CourseForm.propTypes = {
-  authors: PropTypes.array.isRequired,
-  course: PropTypes.object.isRequired,
-  onSave: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  errors: PropTypes.object,
-  saving: PropTypes.bool
-};
+// CourseForm.propTypes = {
+//   authors: PropTypes.array.isRequired,
+//   course: PropTypes.object.isRequired,
+//   onSave: PropTypes.func.isRequired,
+//   onChange: PropTypes.func.isRequired,
+//   errors: PropTypes.object,
+//   saving: PropTypes.bool
+// };
+
+export interface ICourseProps {
+  authors: any[];
+  course: any; //TODO:
+  onSave: (event: any) => void;
+  onChange: (event: any) => void;
+  errors?: any;
+  saving?: boolean;
+}
 
 export default CourseForm;

@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+///<reference path="../../node_modules/react-toastify/index.d.ts"/>
+
+import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+//import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import HomePage from './home/HomePage';
@@ -11,8 +13,13 @@ import CoursesPage from './courses/CoursesPage';
 import ManageCourse from './courses/ManageCoursePage';
 import Auth from '../auth/Auth';
 
-class App extends Component {
-  constructor(props) {
+export interface IAppProps {
+  history?: string;
+}
+
+class App extends React.Component<IAppProps> {
+  auth: Auth;
+  constructor(props: IAppProps) {
     super(props);
     this.auth = new Auth(this.props.history);
   }
@@ -55,7 +62,7 @@ class App extends Component {
               render={props => <PageNotFound auth={this.auth} {...props} />}
             /> */}
           </Switch>
-          <ToastContainer autoClose={3000} hideProgressBar />
+          {/* <ToastContainer autoClose={3000} hideProgressBar /> */}
         </div>
       </div>
     );

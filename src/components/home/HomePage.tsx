@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-// eslint-disable-next-line no-extra-parens
-class HomePage extends Component {
+export interface IHomeProps {
+  auth: any;
+}
+
+class HomePage extends React.Component<IHomeProps> {
   render() {
     return (
       <div className="jumbotron">

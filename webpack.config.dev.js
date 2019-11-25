@@ -16,6 +16,7 @@ module.exports = () => {
   return {
     target: 'web',
     devtool: 'cheap-module-source-map',
+    //devtool: 'inline-source-map',
     entry: './src/index',
     output: {
       path: path.resolve(__dirname, 'build'),
@@ -42,6 +43,11 @@ module.exports = () => {
     module: {
       rules: [
         {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/
+        },
+        {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: ['babel-loader', 'eslint-loader']
@@ -57,7 +63,7 @@ module.exports = () => {
       ]
     },
     resolve: {
-      extensions: ['.js', '.jsx']
+      extensions: ['.tsx', '.ts', '.js', '.jsx']
     }
   };
 };

@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import * as courseActions from '../../redux/actions/courseActions';
 import * as authorActions from '../../redux/actions/authorActions';
@@ -105,7 +105,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CoursesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);

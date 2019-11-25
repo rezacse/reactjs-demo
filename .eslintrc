@@ -12,7 +12,8 @@
     "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "tsx": true
     }
   },
   "env": {
@@ -27,7 +28,7 @@
     },
     "import/resolver": {
       "node": {
-        "extensions": [".js", ".jsx"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
   },
@@ -79,5 +80,11 @@
     "react/sort-comp": 1,
     "react/jsx-wrap-multilines": 1
   },
+  // "eslint.validate": [
+  //   "javascript",
+  //   "javascriptreact",
+  //   "typescript",
+  //   "typescriptreact"
+  // ],
   "root": true
 }

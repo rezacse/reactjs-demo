@@ -1,7 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
-const SelectInput = props => {
+export interface ISelectProps {
+  label: string;
+  name: string;
+  value?: string | number;
+  error?: string;
+  onChange: (event: any) => void;
+  defaultOption?: string;
+  options: any[];
+}
+
+const SelectInput: React.SFC<ISelectProps> = props => {
   let { label, name, error, onChange, defaultOption, value, options } = props;
   let wrapperClass = 'form-group';
   if (error && error.length > 0) {
@@ -18,7 +27,7 @@ const SelectInput = props => {
           onChange={onChange}
         >
           <option value="">{defaultOption}</option>
-          {options.map(option => {
+          {options.map((option: any) => {
             return (
               <option key={option.value} value={option.value}>
                 {option.text}
@@ -32,14 +41,14 @@ const SelectInput = props => {
   );
 };
 
-SelectInput.propTypes = {
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  error: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-  defaultOption: PropTypes.string,
-  options: PropTypes.arrayOf(PropTypes.object)
-};
+// SelectInput.propTypes = {
+//   label: PropTypes.string.isRequired,
+//   name: PropTypes.string.isRequired,
+//   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+//   error: PropTypes.string,
+//   onChange: PropTypes.func.isRequired,
+//   defaultOption: PropTypes.string,
+//   options: PropTypes.arrayOf(PropTypes.object)
+// };
 
 export default SelectInput;

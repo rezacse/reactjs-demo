@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import CourseForm from './CourseForm';
 import { getCourses, saveCourse } from '../../redux/actions/courseActions';
 import { getAuthors } from '../../redux/actions/authorActions';
-import newCourse from '../../../tools/mockData';
-import { toast } from 'react-toastify';
+import { newCourse } from '../../../tools/mockData';
+//import { toast } from 'react-toastify';
 
-export function ManageCoursePage({
+export const ManageCoursePage: React.FC<IManageCourseProps> = ({
   courses,
   authors,
   getAuthors,
@@ -16,12 +16,12 @@ export function ManageCoursePage({
   saveCourse,
   history,
   ...props
-}) {
-  const [course, setCourse] = useState({ ...props.course });
-  const [errors, setErrors] = useState({});
-  const [saving, setSaving] = useState(false);
+}) => {
+  const [course, setCourse] = React.useState({ ...props.course });
+  const [errors, setErrors] = React.useState({});
+  const [saving, setSaving] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (courses.length === 0) {
       getCourses().catch(error => {
         alert('Loading courses failed' + error);
@@ -47,7 +47,7 @@ export function ManageCoursePage({
 
   function formIsValid() {
     const { title, authorId, category } = course;
-    const errors = {};
+    const errors: any = {};
 
     if (!title) errors.title = 'Title is required.';
     if (!authorId) errors.author = 'Author is required';
@@ -64,7 +64,7 @@ export function ManageCoursePage({
     setSaving(true);
     saveCourse(course)
       .then(() => {
-        toast.success('Course Saved');
+        //toast.success('Course Saved');
         history.push('/courses');
       })
       .catch(error => {
@@ -83,17 +83,17 @@ export function ManageCoursePage({
       errors={errors}
     />
   );
-}
-
-ManageCoursePage.propTypes = {
-  course: PropTypes.object.isRequired,
-  authors: PropTypes.array.isRequired,
-  courses: PropTypes.array.isRequired,
-  getCourses: PropTypes.func.isRequired,
-  getAuthors: PropTypes.func.isRequired,
-  saveCourse: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
 };
+
+// ManageCoursePage.propTypes = {
+//   course: PropTypes.object.isRequired,
+//   authors: PropTypes.array.isRequired,
+//   courses: PropTypes.array.isRequired,
+//   getCourses: PropTypes.func.isRequired,
+//   getAuthors: PropTypes.func.isRequired,
+//   saveCourse: PropTypes.func.isRequired,
+//   history: PropTypes.object.isRequired
+// };
 
 function mapStateToProps(state, ownProps) {
   const slug = ownProps.match.params.slug;
@@ -118,7 +118,20 @@ export function getCourseBySlug(courses, slug) {
   return courses.find(course => course.slug === slug) || null;
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ManageCoursePage);
+export interface IManageCourseProps {
+  course: ICourse;
+  authors: any[];
+  courses: ICourse[];
+  getCourses: any;
+  getAuthors: any;
+  saveCourse: (course: any) => any;
+  history: any;
+}
+
+export interface ICourse {
+  title: string;
+  authorId: string;
+  category: string;
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManageCoursePage);
